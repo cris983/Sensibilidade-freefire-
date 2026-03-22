@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sensibilidade Free Fire PRO</title>
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+
+    body{
+      background: linear-gradient(135deg,#020617,#0f172a,#020617);
+      color:#fff;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+    }
+
+    .card{
+      background: rgba(30,41,59,0.7);
+      backdrop-filter: blur(15px);
+      padding:25px;
+      border-radius:20px;
+      width:100%;
+      max-width:420px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.6);
+      animation: fadeIn 0.8s ease;
+    }
+
+    h2{
+      margin-bottom:10px;
+      font-size:22px;
+      background: linear-gradient(90deg,#22c55e,#4ade80);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    p{margin-bottom:10px;color:#cbd5f5;font-size:14px}
+
+    select,button{
+      width:100%;
+      padding:12px;
+      border-radius:12px;
+      border:none;
+      margin-top:10px;
+      font-size:15px;
+    }
+
+    select{
+      background:#020617;
+      color:#fff;
+      border:1px solid #334155;
+    }
+
+    button{
+      background: linear-gradient(90deg,#22c55e,#16a34a);
+      color:#fff;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.2s;
+    }
+
+    button:hover{
+      transform: scale(1.05);
+      box-shadow:0 0 15px rgba(34,197,94,0.6);
+    }
+
+    .resultado{
+      margin-top:20px;
+      background:#020617;
+      padding:15px;
+      border-radius:12px;
+      border:1px solid #334155;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .resultado h3{
+      margin-bottom:10px;
+      color:#4ade80;
+    }
+
+    .resultado p{
+      margin:6px 0;
+      font-size:14px;
+    }
+
+    @keyframes fadeIn{
+      from{opacity:0; transform:translateY(10px)}
+      to{opacity:1; transform:translateY(0)}
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+  <h2>🔥 Sensibilidade Automática</h2>
+  <p>Escolha a marca do seu celular:</p>
+
+  <select id="marca">
+    <option value="">Selecione a marca</option>
+    <option>Samsung</option>
+    <option>Xiaomi</option>
+    <option>Motorola</option>
+    <option>Apple</option>
+    <option>Huawei</option>
+    <option>Realme</option>
+    <option>Oppo</option>
+    <option>Vivo</option>
+    <option>Asus</option>
+    <option>Lenovo</option>
+    <option>LG</option>
+    <option>Sony</option>
+    <option>Nokia</option>
+    <option>Infinix</option>
+    <option>Tecno</option>
+    <option>OnePlus</option>
+    <option>Google Pixel</option>
+    <option>ZTE</option>
+    <option>Honor</option>
+    <option>Blackview</option>
+    <option>Doogee</option>
+    <option>Umidigi</option>
+    <option>Meizu</option>
+    <option>Alcatel</option>
+    <option>Sharp</option>
+    <option>HTC</option>
+    <option>Panasonic</option>
+    <option>Philips</option>
+    <option>Coolpad</option>
+    <option>Micromax</option>
+    <option>Lava</option>
+    <option>Karbonn</option>
+    <option>BLU</option>
+    <option>Fairphone</option>
+    <option>Cat</option>
+    <option>Kyocera</option>
+    <option>Wiko</option>
+    <option>Archos</option>
+    <option>BQ</option>
+    <option>Prestigio</option>
+    <option>Gionee</option>
+    <option>LeEco</option>
+    <option>Yota</option>
+    <option>Razer</option>
+    <option>Red Hydrogen</option>
+    <option>Essential</option>
+    <option>Nothing</option>
+    <option>iQOO</option>
+    <option>ROG Phone</option>
+  </select>
+
+  <button onclick="gerar()">GERAR SENSIBILIDADE</button>
+  <button onclick="gerar()">GERAR OUTRA 🔄</button>
+
+  <div class="resultado" id="res"></div>
+</div>
+
+<script>
+function gerar(){
+  const marca = document.getElementById('marca').value;
+
+  if(!marca){alert('Escolhe a marca!'); return;}
+
+  let base = Math.floor(Math.random()*20)+170;
+
+  let sens = {
+    geral: base,
+    redDot: base - Math.floor(Math.random()*15),
+    mira2x: base - Math.floor(Math.random()*30),
+    mira4x: base - Math.floor(Math.random()*10),
+    awm: Math.floor(Math.random()*40)+20,
+    dpi: 600 + Math.floor(Math.random()*400)
+  };
+
+  if(marca === 'Apple'){
+    sens.geral -= 10;
+    sens.redDot -= 10;
+  }
+
+  if(marca === 'Samsung' || marca === 'Xiaomi'){
+    sens.geral += 5;
+  }
+
+  document.getElementById('res').innerHTML = `
+    <h3>📱 ${marca}</h3>
+    <p>🎯 Geral: ${sens.geral}</p>
+    <p>🔴 Ponto Vermelho: ${sens.redDot}</p>
+    <p>🔎 Mira 2x: ${sens.mira2x}</p>
+    <p>🔭 Mira 4x: ${sens.mira4x}</p>
+    <p>🎯 AWM: ${sens.awm}</p>
+    <p>⚙️ DPI: ${sens.dpi}</p>
+  `;
+}
+</script>
+
+</body>
+  </html>
+      
